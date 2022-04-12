@@ -44,6 +44,9 @@ export default function App() {
                 backgroundColor: "red", //단색일 경우에는 배열에 넣지 않아도 된다 // 여러색일 경우 배열 요소를 번갈아가며 입힘
                 borderWidth: 5,
                 borderColor: "#000", // ["#000", "aqua"] 배열로 할 시 번갈아가며 색을 입힘
+                hoverBorderWidth: 8,
+                hoverBackgroundColor: "blue",
+                hoverBorderColor: "aqua",
               },
             ],
           },
