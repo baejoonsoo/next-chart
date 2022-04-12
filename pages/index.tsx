@@ -41,6 +41,7 @@ export default function App() {
               {
                 label: "as",
                 data: [40, 5, 20, 13, 10],
+                backgroundColor: ["red", "blue", "green"],
               },
             ],
           },
