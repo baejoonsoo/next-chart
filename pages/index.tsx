@@ -72,6 +72,15 @@ export default function App() {
               },
             ],
           },
+          options: {
+            plugins: {
+              title: {
+                display: true,
+                text: "my Chart",
+                color: "red",
+              },
+            },
+          },
         });
       }
     }
