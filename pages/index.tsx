@@ -3,14 +3,14 @@ import Chart from "chart.js/auto";
 
 export default function App() {
   const canvasEl = useRef<HTMLCanvasElement>(null);
+  let myLineChart: Chart<"bar", number[], string>;
 
-  // const configs =
-  useEffect(() => {
+  const createBarChart = () => {
     if (canvasEl && canvasEl.current) {
       const ctx = canvasEl.current.getContext("2d");
 
       if (ctx) {
-        const myLineChart: Chart<"bar", number[], string> = new Chart(ctx, {
+        myLineChart = new Chart(ctx, {
           type: "bar",
           data: {
             labels: ["1", "2", "3"],
@@ -22,12 +22,16 @@ export default function App() {
             ],
           },
         });
-        return () => {
-          myLineChart.destroy();
-        };
       }
     }
-  });
+  };
+  useEffect(() => {
+    createBarChart();
+
+    return () => {
+      myLineChart.destroy();
+    };
+  }, []);
 
   return (
     <div className="App">
