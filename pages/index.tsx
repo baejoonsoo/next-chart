@@ -84,6 +84,9 @@ export default function App() {
                 display: true, //  표시할 것인지 // default : true
                 position: "right", // 어디에 표시할 것인지 // top, bottom, left, right
               },
+              tooltip: {
+                enabled: false, // tooltip(hover 할 시 나타나는 설명)을 표시할 것인지
+              },
             },
           },
         });
