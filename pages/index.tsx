@@ -79,6 +79,11 @@ export default function App() {
                 text: "my Chart",
                 color: "red",
               },
+              legend: {
+                // bar 함목들
+                display: true, //  표시할 것인지 // default : true
+                position: "right", // 어디에 표시할 것인지 // top, bottom, left, right
+              },
             },
           },
         });
