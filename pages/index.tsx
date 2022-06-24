@@ -3,11 +3,7 @@ import Chart from "chart.js/auto";
 
 export default function App() {
   const canvasEl = useRef<HTMLCanvasElement>(null);
-  let myLineChart: Chart<"bar", number[], string>;
-  const canvasEl2 = useRef<HTMLCanvasElement>(null);
-  let myLineChart2: Chart<"bar", number[], string>;
-  const canvasEl3 = useRef<HTMLCanvasElement>(null);
-  let myLineChart3: Chart<"bar", number[], string>;
+  let myLineChart: Chart<"line", number[], string>;
 
   const createBarChart = () => {
     if (canvasEl && canvasEl.current) {
@@ -15,13 +11,13 @@ export default function App() {
 
       if (ctx) {
         myLineChart = new Chart(ctx, {
-          type: "bar",
+          type: "line",
           data: {
             labels: ["A", "B", "C"],
             datasets: [
               {
                 label: "as",
-                data: [10, 20, 30],
+                data: [10, 20, 15],
               },
             ],
           },
@@ -29,80 +25,11 @@ export default function App() {
       }
     }
   };
-
-  const createBarChart2 = () => {
-    if (canvasEl2 && canvasEl2.current) {
-      const ctx = canvasEl2.current.getContext("2d");
-
-      if (ctx) {
-        myLineChart2 = new Chart(ctx, {
-          type: "bar",
-          data: {
-            labels: ["D", "E", "F", "G", "H"],
-            datasets: [
-              {
-                label: "as",
-                data: [40, 5, 20, 13, 10],
-                backgroundColor: "red", //단색일 경우에는 배열에 넣지 않아도 된다 // 여러색일 경우 배열 요소를 번갈아가며 입힘
-                borderWidth: 5,
-                borderColor: "#000", // ["#000", "aqua"] 배열로 할 시 번갈아가며 색을 입힘
-                hoverBorderWidth: 8,
-                hoverBackgroundColor: "blue",
-                hoverBorderColor: "aqua",
-              },
-            ],
-          },
-        });
-      }
-    }
-  };
-  const createBarChart3 = () => {
-    if (canvasEl3 && canvasEl3.current) {
-      const ctx = canvasEl3.current.getContext("2d");
-
-      if (ctx) {
-        myLineChart3 = new Chart(ctx, {
-          type: "bar",
-          data: {
-            labels: ["A", "B", "C"],
-            datasets: [
-              {
-                label: "as",
-                data: [10, 20, 30],
-              },
-            ],
-          },
-          options: {
-            plugins: {
-              title: {
-                display: true,
-                text: "my Chart",
-                color: "red",
-              },
-              legend: {
-                // bar 함목들
-                display: true, //  표시할 것인지 // default : true
-                position: "right", // 어디에 표시할 것인지 // top, bottom, left, right
-              },
-              tooltip: {
-                enabled: false, // tooltip(hover 할 시 나타나는 설명)을 표시할 것인지
-              },
-            },
-          },
-        });
-      }
-    }
-  };
-
   useEffect(() => {
     createBarChart();
-    createBarChart2();
-    createBarChart3();
 
     return () => {
       myLineChart.destroy();
-      myLineChart2.destroy();
-      myLineChart3.destroy();
     };
   }, []);
 
@@ -110,8 +37,6 @@ export default function App() {
     <div className="App">
       <span>Chart.js Demo</span>
       <canvas id="myChart" ref={canvasEl} height="100" />
-      <canvas id="myChart" ref={canvasEl2} height="100" />
-      <canvas id="myChart" ref={canvasEl3} height="100" />
     </div>
   );
 }
